@@ -16,6 +16,7 @@ function Modal({ showModal, setShowModal }: Props) {
   const handleClose = () => {
     setShowModal(false);
   };
+
   const [muted, setMuted] = useState(true);
   const [addedToList, SetAddedToList] = useState(false);
 
@@ -34,25 +35,27 @@ function Modal({ showModal, setShowModal }: Props) {
           border: "1px solid #000",
           boxShadow: 24,
           p: 4,
+          maxWidth: "50%",
         }}
       >
         <div className="flex justify-end cursor-pointer" onClick={handleClose}>
           <IoCloseCircle className="h-10 w-10" />
         </div>
-        <ReactPlayer
-          url="https://www.youtube.com/watch?v=32RAq6JzY-w"
-          playing
-          muted={muted}
-          width={700}
-          height={400}
-        />
-        <div className="mt-2 flex w-full items-center justify-between px-10">
-          <div className="flex space-x-2">
-          <Link href="/watch">
-            <button className="flex items-center gap-x-2 rounded bg-white px-8 text-xl font-bold text-black transition hover:bg-[#e6e6e6]" >
-              <FaPlay className="h-6 w-6 text-black" />
-              Play
-            </button>
+        <div style={{ maxWidth: "100%", overflow:"hidden",width:"100%" }}>
+          <ReactPlayer
+            url="https://www.youtube.com/watch?v=32RAq6JzY-w"
+            playing
+            muted={muted}
+            height={400}
+          />
+        </div>
+        <div className="mt-2 flex w-full items-center justify-between px-10 flex-wrap">
+          <div className="flex space-x-2 flex-wrap">
+            <Link href="/watch">
+              <button className="flex items-center gap-x-2 rounded bg-white px-8 text-xl font-bold text-black transition hover:bg-[#e6e6e6]">
+                <FaPlay className="h-6 w-6 text-black" />
+                Play
+              </button>
             </Link>
 
             <button className="modalButton" onClick={handleList}>
